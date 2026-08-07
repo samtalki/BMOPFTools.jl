@@ -3489,9 +3489,8 @@ const IEEE13_FIXTURE = """
     # (PowerIO.jl). PowerIO is a hard dependency, so this always runs.
     # --------------------------------------------------------------------------
     @testset "OpenDSS generator conversion via PowerIO" begin
-        # A prefix check plus a floor, not an exact minor pin: the pin broke on
-        # every PowerIO release although the surface this package consumes is
-        # stable across them (and committed to from PowerIO 1.0 on).
+        # A prefix check plus a floor, not an exact pin. The consumed
+        # surface is stable across PowerIO releases.
         @test startswith(BMOPFTools.powerio_version(), "PowerIO.jl ")
         @test pkgversion(BMOPFTools.PowerIO) >= v"0.7.0"
         net = from_dss(joinpath(@__DIR__, "data", "issue190_generator.dss"))
